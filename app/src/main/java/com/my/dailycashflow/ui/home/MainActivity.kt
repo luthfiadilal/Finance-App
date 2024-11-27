@@ -66,8 +66,13 @@ class MainActivity : AppCompatActivity() {
             showCashFlowSummary(it)
         }
 
-        viewModel.getRecentCashFlow.observe(this) {
-            recentCashFlow(it)
+        viewModel.getRecentCashFlow.observe(this) { data ->
+            data?.let {
+                recentCashFlow(it)
+            } ?: run {
+                Log.e("MainActivity", "Recent CashFlow data is null")
+                // Bisa menambahkan tindakan jika data null, misalnya memberi pesan ke UI
+            }
         }
 
         adapterExpensesSummaryByCategory = ExpensesSummaryByCategoryAdapter(
@@ -104,11 +109,24 @@ class MainActivity : AppCompatActivity() {
         // variable untuk menampilkan data kategori
         val textKategory = viewGroup.findViewById<TextView>(R.id.text_category)
 
-        textDate.text = data.cashFlow.dateInMillis?.convertLongToTime()
-        textInformation.text = data.cashFlow.information
-        textPrice.text = data.cashFlow.amount?.formatToIDR()
-        textKategory.text = data.category?.name ?: "Uncategorized"
-        textType.text = data.category?.type ?: "Unknown"
+
+        // Pastikan data.cashFlow tidak null
+        val cashFlow = data.cashFlow
+        if (cashFlow != null) {
+            textDate.text = cashFlow.dateInMillis?.convertLongToTime() ?: "No date available"
+            textInformation.text = cashFlow.information ?: "No information available"
+            textPrice.text = cashFlow.amount?.formatToIDR() ?: "No price available"
+        } else {
+            // Handle jika cashFlow null
+            textDate.text = "No date available"
+            textInformation.text = "No information available"
+            textPrice.text = "No price available"
+        }
+
+        // Pastikan category tidak null
+        val category = data.category
+        textKategory.text = category?.name ?: "Uncategorized"
+        textType.text = category?.type ?: "Unknown"
 
 
 
