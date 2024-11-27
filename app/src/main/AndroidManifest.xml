@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.my.dailycashflow">
+
+    <application
+        android:name=".CashFlowApp"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.DailyCashFlow">
+        <activity
+            android:name=".ui.home.CahflowDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.home.ActivityCashflowDetail"
+            android:exported="false" />
+        <activity
+            android:name=".ui.home.Activity_Cashflow_Detail"
+            android:exported="false" />
+        <activity
+            android:name=".ui.expensessummary.ExpenseDetailActivity"
+            android:exported="false" />
+        <activity android:name=".ui.addcashflow.AddCashFlowActivity" />
+        <activity android:name=".ui.allcashflows.AllCashFlowsActivity" />
+        <activity android:name=".ui.setting.SettingActivity" />
+        <activity
+            android:name=".ui.home.MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/Theme.DailyCashFlow.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.listexpenses.ListExpensesByCategoryActivity"
+            android:parentActivityName=".ui.home.MainActivity" />
+    </application>
+
+</manifest>

@@ -1,0 +1,62 @@
+<resources>
+    <string name="app_name">Daily Cash Flow</string>
+    <string name="my_daily_expense">My Daily Cash Flow</string>
+    <string name="dont_forget_to_record_your_expenses_today">Dont forget to record your today\'s finance</string>
+    <string name="all_summary">All Summary</string>
+    <string name="expense">Expense</string>
+    <string name="income">Income</string>
+    <string name="balance">Balance</string>
+    <string name="dummy_money">1000000</string>
+    <string name="dummy_date">Friday, 12 February 2021</string>
+    <string name="dummy_information">Buy food from Restaurant</string>
+    <string name="dummy_category">Foods</string>
+    <string name="total_expenses">Total Expenses</string>
+    <string name="spending_limit">Spending Limit</string>
+    <string name="show_all_cashflows">Show All Cash Flows</string>
+    <string name="filter_by">Filter by</string>
+    <string name="amount">Amount</string>
+    <string name="category">Category</string>
+    <string name="date">Date</string>
+    <string name="information">Information</string>
+    <string name="save">Save</string>
+
+    <string name="pref_key_notify">key_notification</string>
+    <string name="pref_notify_name">Notification</string>
+    <string name="pref_notify_summary">Reminder when expense in a category has exceeds the limit</string>
+    <string name="notify_channel_name">Notif expenses</string>
+    <string name="notify_title">Expenses in %1$s Category Exceed the Limit</string>
+    <string name="notify_content">You\'ve spent Rp %1$d, exceeding the Rp %2$d limit</string>
+    <string name="pref_key_night" translatable="false">key_night_mode</string>
+    <string name="pref_night_title">Night mode</string>
+    <string name="pref_night_summary">Select a dark or light theme.</string>
+    <string name="pref_night_auto" translatable="false">auto</string>
+    <string name="pref_night_on" translatable="false">on</string>
+    <string name="pref_night_off" translatable="false">off</string>
+    <string name="night_mode_auto">Automatic</string>
+    <string name="night_mode_on">Night mode</string>
+    <string name="night_mode_off">Day mode</string>
+    <string name="recent_cash_flow">Recent Cash Flow</string>
+    <string name="expense_by_category">Expenses By Category</string>
+    <string name="all_cash_flows">All Cash Flows</string>
+    <string name="list_expenses_summary">List Expenses</string>
+    <string name="add_cashFlow">Add Cash Flow</string>
+    <string name="expenses_deleted">Expense has been deleted</string>
+    <string name="setting">Setting</string>
+
+    <string-array name="list_type">
+        <item>Expense</item>
+        <item>Income</item>
+    </string-array>
+
+    <string-array name="night_mode">
+        <item>@string/night_mode_auto</item>
+        <item>@string/night_mode_on</item>
+        <item>@string/night_mode_off</item>
+    </string-array>
+
+    <string-array name="night_mode_value">
+        <item>@string/pref_night_auto</item>
+        <item>@string/pref_night_on</item>
+        <item>@string/pref_night_off</item>
+    </string-array>
+</resources>

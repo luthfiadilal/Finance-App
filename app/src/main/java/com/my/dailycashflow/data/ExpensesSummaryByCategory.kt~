@@ -1,0 +1,9 @@
+package com.my.dailycashflow.data
+
+import androidx.room.Embedded
+
+data class ExpensesSummaryByCategory(
+    @Embedded
+    val category: Category,
+    val total: Int
+)

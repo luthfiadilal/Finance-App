@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:cardview="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.CahflowDetailActivity">
+
+    <!-- CardView untuk Detail CashFlow -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewCashFlowDetail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="6dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Tanggal Transaksi -->
+            <TextView
+                android:id="@+id/textViewDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date: 2024-11-27"
+                android:textSize="16sp"
+                android:textColor="@color/black" />
+
+            <!-- Tipe Transaksi (EXPENSE/INCOME) -->
+            <TextView
+                android:id="@+id/textViewType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Expense"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginTop="8dp"/>
+
+            <!-- Kategori Transaksi -->
+            <TextView
+                android:id="@+id/textViewCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Category: Food"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:layout_marginTop="8dp"/>
+
+            <!-- Informasi Transaksi -->
+            <TextView
+                android:id="@+id/textViewInformation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Information: Lunch at restaurant"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:layout_marginTop="8dp"/>
+
+            <!-- Jumlah Transaksi -->
+            <TextView
+                android:id="@+id/textViewAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Amount: Rp 1,000,000"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginTop="16dp"/>
+
+            <!-- Limit Transaksi -->
+            <TextView
+                android:id="@+id/textViewLimit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Limit: Rp 1,500,000"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:layout_marginTop="8dp"/>
+
+            <Button
+                android:id="@+id/buttonDelete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Delete"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewAmount"
+
+                android:layout_marginTop="16dp"/>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
