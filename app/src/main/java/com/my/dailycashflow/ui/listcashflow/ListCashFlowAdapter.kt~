@@ -20,7 +20,7 @@ class ListCashFlowAdapter :
         (getItem(position))?.let { holder.bindData(it) }
     }
 
-    fun getItemAt(position: Int): CashFlowWithCategory? {
+    fun getItemAt(position: Int): CashFlowWithCategory {
         return getItem(position) // Sesuaikan dengan implementasi adapter Anda
     }
 

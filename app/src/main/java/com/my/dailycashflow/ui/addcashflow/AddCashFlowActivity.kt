@@ -11,11 +11,16 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.work.ExistingWorkPolicy
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
+import androidx.work.workDataOf
 import com.google.android.material.textfield.TextInputEditText
 import com.my.dailycashflow.R
 import com.my.dailycashflow.data.CashFlow
 import com.my.dailycashflow.data.Category
 import com.my.dailycashflow.data.CashFlowSummaryByCategory
+import com.my.dailycashflow.notification.NotificationWorker
 import com.my.dailycashflow.util.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -105,6 +110,27 @@ class AddCashFlowActivity : AppCompatActivity() {
                 val type = spinnerType.selectedItem.toString()
                 val category = categorySelected
 
+                if (category != null && amount > category.limit) {
+                    // Kirim data ke Worker untuk memicu notifikasi
+                    val inputData = workDataOf(
+                        CATEGORY_ID to category.id,
+                        CATEGORY_NAME to category.name,
+                        CATEGORY_TOTAL to amount,
+                        CATEGORY_LIMIT to category.limit
+                    )
+
+                    val notificationRequest = OneTimeWorkRequestBuilder<NotificationWorker>()
+                        .setInputData(inputData)
+                        .build()
+
+                    WorkManager.getInstance(this).enqueueUniqueWork(
+                        NOTIF_UNIQUE_WORK,
+                        ExistingWorkPolicy.REPLACE,
+                        notificationRequest
+                    )
+                }
+
+
                 var cashFlow = CashFlow(
                     information = information,
                     dateInMillis = dateInMillis,
@@ -166,7 +192,24 @@ class AddCashFlowActivity : AppCompatActivity() {
 
     private fun setUpWorkManager(cashFlowSummaryByCategory: CashFlowSummaryByCategory) {
         categorySelected?.let { category ->
-            finish()
+            if (cashFlowSummaryByCategory.total > category.limit) {
+                val inputData = workDataOf(
+                    CATEGORY_ID to category.id,
+                    CATEGORY_NAME to category.name,
+                    CATEGORY_TOTAL to cashFlowSummaryByCategory.total,
+                    CATEGORY_LIMIT to category.limit
+                )
+
+                val workRequest = OneTimeWorkRequestBuilder<NotificationWorker>()
+                    .setInputData(inputData)
+                    .build()
+
+                WorkManager.getInstance(this).enqueueUniqueWork(
+                    NOTIF_UNIQUE_WORK,
+                    ExistingWorkPolicy.REPLACE,
+                    workRequest
+                )
+            }
         }
     }
 

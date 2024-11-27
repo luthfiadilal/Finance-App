@@ -1,6 +1,7 @@
 package com.my.dailycashflow.ui.home
 
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -15,6 +16,9 @@ import java.util.Currency
 import java.util.Locale
 
 class CahflowDetailActivity : AppCompatActivity() {
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -24,6 +28,8 @@ class CahflowDetailActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        var buttomDelete: Button = findViewById(R.id.buttonDelete)
 
         // Ambil objek ExpensesSummaryByCategory dari Intent
         val expense = intent.getParcelableExtra<ExpensesSummaryByCategory>(EXPENSE)
@@ -47,6 +53,10 @@ class CahflowDetailActivity : AppCompatActivity() {
 //            Toast.makeText(this, "Data received: ${it.toString()}", Toast.LENGTH_SHORT).show()
         } ?: run {
             Toast.makeText(this, "No expense data found", Toast.LENGTH_SHORT).show()
+        }
+
+        buttomDelete.setOnClickListener {
+            Toast.makeText(this, "Delete", Toast.LENGTH_SHORT).show()
         }
     }
 
