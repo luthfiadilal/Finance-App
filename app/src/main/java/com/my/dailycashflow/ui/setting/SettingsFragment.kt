@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.preference.ListPreference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
 import androidx.preference.SwitchPreference
@@ -18,6 +19,18 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preferences, rootKey)
+
+        val themePreference = findPreference<ListPreference>(getString(R.string.pref_key_night))
+        themePreference?.setOnPreferenceChangeListener { _, newValue ->
+            val mode = when (newValue.toString()) {
+                getString(R.string.pref_night_auto) -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
+                getString(R.string.pref_night_on) -> AppCompatDelegate.MODE_NIGHT_YES
+                getString(R.string.pref_night_off) -> AppCompatDelegate.MODE_NIGHT_NO
+                else -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
+            }
+            updateTheme(mode) // Gunakan fungsi updateTheme
+            true
+        }
 
         val notifySwitch = findPreference<SwitchPreference>(getString(R.string.pref_key_notify))
         notifySwitch?.setOnPreferenceChangeListener { _, newValue ->
